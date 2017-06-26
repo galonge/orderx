@@ -39,7 +39,6 @@
                         @else
 
                             <li><a href="/orderx/products/create">Add Product</a></li>
-                            <li><a href="/orders">Create Order</a></li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

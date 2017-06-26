@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
 
-class ProductsController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +12,8 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $products = Product::orderBy('created_at', 'desc')->paginate(5);
-        return view('products.index')->with('products', $products);
+    {
+        return view('orders.index');
     }
 
     /**
@@ -25,7 +23,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        //
     }
 
     /**
@@ -36,18 +34,7 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required'
-            ]);
-        $product = new Product;
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->save();
-
-        return redirect('/products')->with('success', 'Product Added');
+        //
     }
 
     /**
@@ -58,8 +45,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('products.show')->with('product', $product);
+        //
     }
 
     /**

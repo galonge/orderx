@@ -18,6 +18,8 @@
 Route::get('/', 'PagesController@index');
 
 Route::resource('products', 'ProductsController');
+Route::resource('orders', 'OrdersController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

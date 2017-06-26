@@ -14,6 +14,11 @@
     		{{Form::textarea('description', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Enter product description here'])}}
     	</div>
 
+    	 <div class="form-group">
+    		{{Form::label('price', 'Price')}}
+    		{{Form::text('price', '', ['class' => 'form-control', 'placeholder' => 'Enter price per item'])}}
+    	</div>
+
     	{{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 	
 	

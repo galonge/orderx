@@ -6,6 +6,7 @@
 		@foreach($products as $product)
 			<div class="well">
 				<h3><a href="/orderx/products/{{$product->id}}"> {{$product->name}}</a></h3>
+					<span class="pull-right" style="font-size:15px;"><strong>{{$product->price}} EUR</strong> </span>
 				<p>{!! $product->description !!}</p>
 				<small>Added on {{$product->created_at}}</small>
 			</div>
