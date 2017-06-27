@@ -40,33 +40,9 @@ class HomeController extends Controller
        $search_query = \Request::get('search_query'); //<-- we use global request to get the param
        $filter = \Request::get('filter'); 
 
+       //perform search for query term
+
        if(isset($search_query)) {
-
-        // $search_results = array();
-                // $orders = Order::where('id','like','%'.$search_query.'%')
-        // $user_result = User::where('name', 'like', '%'.$search_query.'%')
-        // ->orderBy('created_at')
-        // ->get();
-
-        // $orders = $user_result->sortByDesc('created_at');
-
-
-        // $orders = Order::whereHas('user', function($search_query) use($term) {
-        //     $query->where('name', 'like', '%'.$term.'%');
-        // })->orWhere('product_id','LIKE','%'.$term.'%')->orderBy($order, 'desc')->get();
-
-
-         
-        // $orders = Order::search($search_query, [
-        //     'profile.last_name' => 20,
-        //     'email' => 10,
-        //     'username' => 10,
-        //     'profile.first_name' => 5,
-        //     'friends.username' => 2,
-        //     'friends.email' => 2,
-        //     'friends.profile.first_name' => 1,
-        //     'friends.profile.last_name' => 1,
-        //   ])->get();
 
             $search_result = Order::search($search_query, ['product_id','products.name', 'user.name'])->get();
             
@@ -80,9 +56,21 @@ class HomeController extends Controller
             }
 
 
+       } elseif(isset($filter)) {
+
+             if($filter == 'past7days') {
+                $orders = $orders->where('created_at', '>=', Carbon::now()->subWeek())->get();
+            } elseif($filter == 'today') {
+                $orders = $orders->where('created_at', DB::raw('CURDATE()'))->get(5);
+                // $orders = $search_result->where('created_at', '>=', Carbon::now())->get(5);
+            } else {
+                 $orders = $orders;
+            }
+
+
+       }  else {
+            $orders = $orders;
        }
-        
-        //get product for each order
 
         $data = array('orders' => $orders, 'users_list'=>$users_list, 'products_list'=>$products_list);
 
