@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Product;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,16 @@ class HomeController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('home')->with('orders', $user->orders);
+
+        $orders = $user->orders;
+        $users_list = User::pluck('name', 'id');
+        $products_list = Product::pluck('name', 'id');
+
+        //get product for each order
+
+        $data = array('orders' => $orders, 'users_list'=>$users_list, 'products_list'=>$products_list);
+
+        return view('home')->with($data);
     }
 }
 

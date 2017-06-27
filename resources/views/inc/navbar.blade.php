@@ -13,7 +13,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'orderX') }}
                     </a>
                 </div>
 
@@ -24,8 +24,8 @@
                     </ul>
 
                      <ul class="nav navbar-nav">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
+                        <li><a href="/orderx/home">Home</a></li>
+                        <li><a href="/orderx/about">About</a></li>
                       
                       </ul>
 
