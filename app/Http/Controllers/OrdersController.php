@@ -20,16 +20,28 @@ class OrdersController extends Controller
         $user = User::find($user_id);
 
         $orders = $user->orders->sortByDesc('created_at');
-
-      
+     
 
         $data = array('orders' => $orders);
 
         return view('orders.index')->with($data);
     }
 
-    public function search($filter, $search_term) {
+    public function search(Request $request) {
         //search for term
+
+        $this->validate($request, [
+            'filter' => 'required',
+            'search_query' => 'required'
+            ]);
+
+     $query = strtolower($request->input('search_query'));
+
+    
+
+
+
+     return view('/home')->with($matchingOrders);
     }
 
     /**

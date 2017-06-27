@@ -53,7 +53,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h2> Search For Order</h2>
                         <hr/>
-                        {!! Form::open(['action' => 'OrdersController@search', 'method' => 'GET']) !!}
+                        {!! Form::open(['action' => 'HomeController@index', 'method' => 'GET']) !!}
                            
                            <div class="row">
 
