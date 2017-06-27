@@ -44,9 +44,56 @@
                 </div>
             </div>
 
+              <div class="panel panel-default">
+                <div class="panel-heading"><span class="pull-right"><a href="#" class="btn btn-default btn-sm">Search Order</a></span></div>
+
+                <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2> Search For Order</h2>
+                        <hr/>
+                        {!! Form::open(['action' => 'OrdersController@search', 'method' => 'GET']) !!}
+                           
+                           <div class="row">
+
+                           <div class="col-md-4">
+                                <div class="form-group">
+                                    {{Form::label('filter', 'Filter')}}
+                                {!! Form::select('filter', ['all'=> 'All Time', 'last7days' => 'Last 7 Days', 'today' => 'Today'], null, ['class' => 'form-control']) !!}
+                                  
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+
+                                  <div class="form-group">
+                                    {{Form::label('query', 'Search Term')}}
+                                    {{Form::text('search_query', '', ['class' => 'form-control', 'placeholder' => 'Enter Search Term'])}}
+                                </div>
+
+                            </div>
+
+
+                            
+                            <div class="col-md-4">  <br/>
+                                {{Form::submit('Search', ['class' => 'btn btn-info btn-block'])}}
+                            </div>
+                         </div>
+                        
+                        
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+
+
 
             <div class="panel panel-default">
-                <div class="panel-heading"><span class="pull-right"><a href="/orders" class="btn btn-info btn-sm">View All Orders</a></span></div>
+                <div class="panel-heading"><span class="pull-right"><a href="/orderx/orders" class="btn btn-info btn-sm">View All Orders</a></span></div>
 
                 <div class="panel-body">
 

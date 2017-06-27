@@ -23,3 +23,4 @@ Route::resource('orders', 'OrdersController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/search', 'OrdersController@search');
