@@ -63,6 +63,7 @@
                                 <th>Total</th>
                                 <th>Date</th>
                                 <th>Actions</th>
+                                <th></th>
                             </tr>
 
                             @foreach($orders as $order)
@@ -77,7 +78,37 @@
                                     <td>{{$order->quantity}}</td>
                                     <td>{{$order->total}} eur</td>
                                     <td>{{$order->created_at}}</td>
-                                    <td><a href="#">Edit</a>|<a href="#">Delete</a></td>
+                                    <td><a href="/orderx/orders/{{$order->id}}/edit" class="btn btn-sm btn-primary">Edit</a>
+
+                                        
+                                    </td>
+                                    <td>
+
+                                     {!! Form::open(['action' => ['OrdersController@destroy', $order->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()']) !!}
+                                           
+                                            {{Form::hidden('_method', 'DELETE')}}
+
+
+                                            {{Form::submit('Del', ['class' => 'btn btn-sm btn-danger']) }}
+                                        
+                        
+                                         {!! Form::close() !!}
+
+                                         <script>
+
+                                              function ConfirmDelete()
+                                              {
+                                              var x = confirm("Are you sure you want to delete?");
+                                              if (x)
+                                                return true;
+                                              else
+                                                return false;
+                                              }
+
+                                            </script>
+                                        
+
+                                    </td>
                                 </tr>
 
 

@@ -70,7 +70,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
