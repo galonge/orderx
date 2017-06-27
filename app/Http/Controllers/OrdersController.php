@@ -77,6 +77,8 @@ class OrdersController extends Controller
         $order->total = $total_price;
         $order->save();
 
+        $order->products()->attach($order->product_id);
+
         return redirect('/home')->with('success', $order_message);
     }
 

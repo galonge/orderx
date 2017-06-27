@@ -28,7 +28,7 @@ class HomeController extends Controller
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
 
-        $orders = $user->orders;
+        $orders = $user->orders->sortByDesc('created_at');
         $users_list = User::pluck('name', 'id');
         $products_list = Product::pluck('name', 'id');
 

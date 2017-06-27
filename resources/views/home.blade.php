@@ -68,8 +68,12 @@
                             @foreach($orders as $order)
                                 <tr>
                                     <td>{{$order->user->name}}</td>
-                                    <td>{{$order->product->name }}</td>
-                                    <td>{{$order->product->price }}</td>
+
+                                    @foreach($order->products as $product)
+                                        <td>{{$product->name }}</td>
+                                        <td>{{$product->price }}</td>
+                                    @endforeach
+
                                     <td>{{$order->quantity}}</td>
                                     <td>{{$order->total}} eur</td>
                                     <td>{{$order->created_at}}</td>
