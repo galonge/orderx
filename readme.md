@@ -3,6 +3,7 @@
 <p align="center">
 <h2> OrderX! </h2>
 </p>
+<small>a simple orders management app built with laravel 5 </small>
 
 ## About OrderX
 
